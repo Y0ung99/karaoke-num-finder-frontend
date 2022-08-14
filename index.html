@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      http-equiv="X-UA-Compatible"
+      content="IE=edge"
+    />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0"
+    />
+    <script src="main.js" defer></script>
+    <link rel="stylesheet" href="style.css" />
+    <title>NumFinder</title>
+  </head>
+  <body>
+    <nav class="tab">
+      <button class="searchTab">검색</button>
+      <button class="popularTab">인기차트</button>
+      <button class="newsongTab">신곡</button>
+      <button class="bookmarkTab">북마크</button>
+    </nav>
+    <nav class="searchBar">
+      <select name="selectDate" id="selectDate">
+        <option value="2018">2018</option>
+        <option value="2019">2019</option>
+        <option value="2020">2020</option>
+        <option value="2021">2021</option>
+        <option value="2022">2022</option>
+      </select>
+      <select
+        name="selectCompany"
+        id="selectCompany"
+      >
+        <option value="kumyoung">금영</option>
+        <option value="taejin">태진</option>
+      </select>
+      <select
+        name="selectOptions"
+        id="selectOptions"
+      >
+        <option value="singer">가수별</option>
+        <option value="title">제목별</option>
+      </select>
+      <input class="searchTxt" type="text" />
+      <button class="searchBtn">검색</button>
+    </nav>
+    <main class="main">
+      <div class="list">
+        <div class="line">
+          <div class="num">23800</div>
+          <div class="info">
+            <div class="title">
+              봄 여름 가을 겨울 (Still Life)
+            </div>
+            <div class="singer">빅뱅</div>
+          </div>
+        </div>
+
+        <div class="divider"></div>
+
+        <div class="line">
+          <div class="num">23800</div>
+          <div class="info">
+            <div class="title">
+              봄 여름 가을 겨울 (Still Life)
+            </div>
+            <div class="singer">빅뱅</div>
+          </div>
+        </div>
+        <div class="divider"></div>
+      </div>
+    </main>
+  </body>
+</html>
