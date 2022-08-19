@@ -8,12 +8,17 @@ body {
 .anchors {
     display: flex;
     list-style: none;
+    flex-wrap: wrap;
     margin: 0;
     margin-top: 8px;
 }
 
 .anchors > li {
     margin-left: 4px;
+}
+
+.anchors > li > button {
+    cursor: pointer;
 }
 
 .main {
