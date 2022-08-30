@@ -1,16 +1,25 @@
 body {
     margin: 0;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    text-align: center;
+
+}
+
+.in {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    font-size: 12px;
 }
 
 .anchors {
     display: flex;
+    justify-content: center;
     list-style: none;
     flex-wrap: wrap;
     margin: 0;
+    padding: 0;
     margin-top: 8px;
+    margin-bottom: 4px;
 }
 
 .anchors > li {
@@ -22,14 +31,12 @@ body {
 }
 
 .main {
-    display: flex;
-    flex-direction: column;
     height: 100vh;
     width: 100vw;
-    max-width: 500px;
     border-top: 1px solid black;
     padding: 8px 0px;
-    margin: 8px 0px;
+    margin-left: 200px;
+    margin: 0px;
 }
 
 .tab {
@@ -62,6 +69,7 @@ body {
 .info {
     display: flex;
     flex-direction: column;
+    align-items: flex-start;
 }
 
 .num {
@@ -88,3 +96,26 @@ body {
     margin: 6px 0px;
 }
 
+.log-in,
+.sign-in {
+    padding: 8px 0px;
+}
+
+.welcome {
+    display: block;
+    margin-bottom: 4px;
+}
+
+.id {
+    position: relative;
+    left: -5px;
+}
+
+.pass {
+    position: relative;
+    left: -15px;
+}
+
+.submit {
+    margin-top: 4px;
+}
