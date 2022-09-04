@@ -10,14 +10,14 @@
       name="viewport"
       content="width=device-width, initial-scale=1.0"
     />
-    <script src="main.js" type="module" defer></script>
-    <link rel="stylesheet" href="style.css" />
+    <script src="src/main.js" type="module" defer></script>
+    <link rel="stylesheet" href="css/style.css" />
     <title>NumFinder</title>
   </head>
   <body>
     <div class="in">
-      <a href="login.html" class="login">로그인</a>
-      <a href="signin.html" class="signin">회원가입</a>
+      <button class="c_login">로그인</button>
+      <button class="c_signin">회원가입</button>
     </div>
   
     <nav class="tab">
@@ -53,6 +53,16 @@
     </nav>
     <ul class="anchors">
     </ul>
+    <div class="acception">
+      <main class="log-in">
+        <span class="welcome">로그인을 환영합니다!</span>
+        <div class="inputs">
+            <div class="username">USERNAME: <input type="text" class="usernameTxt"></div>
+            <div class="pass">PASS: <input type="text" class="passTxt"></div>
+        </div>
+        <button class="submit login">로그인</button>
+    </main>
+    </div>
     <main class="main">
       <div class="list">
       </div>
