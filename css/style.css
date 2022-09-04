@@ -1,0 +1,127 @@
+body {
+    margin: 0;
+    text-align: center;
+
+}
+
+.in {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    font-size: 12px;
+}
+
+.anchors {
+    display: flex;
+    justify-content: center;
+    list-style: none;
+    flex-wrap: wrap;
+    margin: 0;
+    padding: 0;
+    margin-top: 8px;
+    margin-bottom: 4px;
+}
+
+.anchors > li {
+    margin-left: 4px;
+}
+
+.anchors > li > button {
+    cursor: pointer;
+}
+
+.main {
+    height: 100vh;
+    width: 100vw;
+    border-top: 1px solid black;
+    padding: 8px 0px;
+    margin-left: 200px;
+    margin: 0px;
+}
+
+.tab {
+    padding: 8px 0px;
+}
+
+#selectDate {
+    visibility: hidden;
+}
+#selectCompany,
+#selectOptions {
+    visibility: visible;
+}
+.searchTxt,
+.searchBtn {
+    visibility: visible;
+}
+
+.list {
+    display: flex;
+    flex-direction: column;
+}
+
+.line {
+    display: flex;
+    padding: 2px 0px;
+    margin: 2px 0px;
+}
+
+.info {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.num {
+    font-weight: bold;
+    background-color: lightgray;
+    border-radius: 20px;
+    padding: 2px;
+}
+
+.title {
+    font-size: small;
+    margin-left: 8px;
+}
+
+.singer {
+    font-weight: bold;
+    font-size: smaller;
+    margin-left: 8px;
+}
+
+.divider {
+    display: inline-block;
+    border-bottom: 1px solid black;
+    margin: 6px 0px;
+}
+
+.log-in,
+.sign-in {
+    padding: 8px 0px;
+}
+
+.welcome {
+    display: block;
+    margin-bottom: 4px;
+}
+
+.username {
+    position: relative;
+    left: -18px;
+    
+}
+
+.pass {
+    position: relative;
+    left: 4px;
+    
+}
+
+.submit {
+    margin-top: 4px;
+}
+
+.acception {
+    display: none;
+}
