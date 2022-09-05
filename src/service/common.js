@@ -4,11 +4,16 @@ export const newsongTab = document.querySelector('.newsongTab');
 export const bookmarkTab = document.querySelector('.bookmarkTab');
 export const loginTab = document.querySelector('.c_login');
 export const acception = document.querySelector('.acception')
+export const email = document.querySelector('.email');
+export const name = document.querySelector('.name')
+export const welcome = document.querySelector('.welcome');
+export const convertor = document.querySelector('#convertor');
 export const selectDate = document.querySelector('#selectDate');
 export const searchTxt = document.querySelector('.searchTxt');
 export const searchBtn = document.querySelector('.searchBtn');
 export const main = document.querySelector('.main');
 export const list = document.querySelector('.list');
+export const submit = document.querySelector('.submit');
 export const anchors = document.querySelector('.anchors');
 export const selectCompany = document.querySelector('#selectCompany');
 export const selectOptions = document.querySelector('#selectOptions');
@@ -41,6 +46,16 @@ export function hideTabs() {
     popularTab.style.visibility = 'hidden';
     bookmarkTab.style.visibility = 'hidden';
     newsongTab.style.visibility = 'hidden';
+}
+
+export function hideNameEmail() {
+    name.style.display = 'none';
+    email.style.display = 'none';
+}
+
+export function viewNameEmail() {
+    name.style.display = 'inherit';
+    email.style.display = 'inherit';
 }
 
 export function hideMain() {

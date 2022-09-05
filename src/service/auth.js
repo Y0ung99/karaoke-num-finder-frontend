@@ -15,7 +15,7 @@ export default class Auth {
                 const pass = this.passTxt.value;
                 const name = this.nameTxt.value;
                 const email = this.emailTxt.value;
-                const response = this.signin(username, pass, name, email);
+                
                 await this.me();
                 location.reload();
                 alert(response);
@@ -24,7 +24,14 @@ export default class Auth {
             this.loginBtn.addEventListener('click', async () => {
                 const username = this.usernameTxt.value;
                 const pass = this.passTxt.value;
-                const response = await this.login(username, pass);
+                const name = this.nameTxt.value;
+                const email = this.emailTxt.value;
+                let response;
+                if (name && email) {
+                    response = await this.signin(username, pass, name, email);
+                } else {
+                    response = await this.login(username, pass);
+                }
                 if (response) {
                     location.reload();
                     alert(`${response.username}님 로그인하셨습니다.`);
@@ -43,8 +50,10 @@ export default class Auth {
                 email,
             }),
         });
-        this.tokenStorage.saveToken(data.token);
-        return data;
+        if (data.token) {
+            this.tokenStorage.saveToken(data.token);
+            return data;
+        }
     }
 
     async login(username, password) {
