@@ -3,6 +3,7 @@ export const popularTab = document.querySelector('.popularTab');
 export const newsongTab = document.querySelector('.newsongTab');
 export const bookmarkTab = document.querySelector('.bookmarkTab');
 export const loginTab = document.querySelector('.c_login');
+export const genreBtn = document.querySelector('.genreBtn');
 export const acception = document.querySelector('.acception')
 export const email = document.querySelector('.email');
 export const name = document.querySelector('.name')
@@ -35,10 +36,15 @@ export function listHTML(song) {
 }
 
 export function hideSearchBar() {
-    selectCompany.style.visibility = 'hidden';
-    selectOptions.style.visibility = 'hidden';
-    searchTxt.style.visibility = 'hidden';
-    searchBtn.style.visibility = 'hidden';
+    selectCompany.style.display = 'none';
+    selectOptions.style.display = 'none';
+    searchTxt.style.display = 'none';
+    searchBtn.style.display = 'none';
+    
+}
+
+export function hideGenreBtn() {
+    genreBtn.style.display = 'none';
 }
 
 export function hideTabs() {
@@ -54,8 +60,8 @@ export function hideNameEmail() {
 }
 
 export function viewNameEmail() {
-    name.style.display = 'inherit';
-    email.style.display = 'inherit';
+    name.style.display = 'block';
+    email.style.display = 'block';
 }
 
 export function hideMain() {
@@ -64,19 +70,19 @@ export function hideMain() {
 
 export function changePopularTab() {
     hideSearchBar();
-    selectCompany.style.visibility = 'visible'
-    selectDate.style.visibility = 'visible';``
+    selectCompany.style.display = 'inline-block';
+    genreBtn.style.display = 'inline-block';
 }
 
 export function changeNewsongTab() {
     hideSearchBar();
-    selectCompany.style.visibility = 'visible'
-    selectDate.style.visibility = 'hidden';
+    selectCompany.style.display = 'inline-block';
+    genreBtn.style.display = 'inline-block';
 }
 
 export function changeBookmarkTab() {
     hideSearchBar();
-    selectDate.style.visibility = 'hidden';
+    hideGenreBtn();
 }
 
 export function intervalAuth(sec, func) {
