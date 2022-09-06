@@ -6,35 +6,27 @@ export default class Auth {
         this.passTxt = document.querySelector('.passTxt');
         this.nameTxt = document.querySelector('.nameTxt');
         this.emailTxt = document.querySelector('.emailTxt');
-        this.signinBtn = document.querySelector('.signin');
         this.loginBtn = document.querySelector('.login');
 
-        if (this.signinBtn) {
-            this.signinBtn.addEventListener('click', async () => {
-                const username = this.usernameTxt.value;
-                const pass = this.passTxt.value;
-                const name = this.nameTxt.value;
-                const email = this.emailTxt.value;
-                
-                await this.me();
-                location.reload();
-                alert(response);
-            });
-        } else if (this.loginBtn) {
+        if (this.loginBtn) {
             this.loginBtn.addEventListener('click', async () => {
                 const username = this.usernameTxt.value;
                 const pass = this.passTxt.value;
                 const name = this.nameTxt.value;
                 const email = this.emailTxt.value;
-                let response;
+                let data;
+    
                 if (name && email) {
-                    response = await this.signin(username, pass, name, email);
+                    data = await this.signin(username, pass, name, email);
                 } else {
-                    response = await this.login(username, pass);
+                    data = await this.login(username, pass);
                 }
-                if (response) {
+
+                if (data.token) {
                     location.reload();
-                    alert(`${response.username}님 로그인하셨습니다.`);
+                    alert(`${data.username}님 로그인하셨습니다.`);
+                } else {
+                    alert(data);
                 }
             });
         }
@@ -52,8 +44,9 @@ export default class Auth {
         });
         if (data.token) {
             this.tokenStorage.saveToken(data.token);
-            return data;
         }
+        return data;
+
     }
 
     async login(username, password) {
@@ -66,8 +59,8 @@ export default class Auth {
         });
         if (data.token) {
             this.tokenStorage.saveToken(data.token);
-            return data;
         }
+        return data;
     }
 
     async me() {
