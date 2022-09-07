@@ -85,6 +85,10 @@ export function changeBookmarkTab() {
     hideGenreBtn();
 }
 
+export function addSongsToList(songs) {
+    list.innerHTML = songs.map(song => listHTML(song)).join('');
+}
+
 export function intervalAuth(sec, func) {
     func();
     return setInterval(func, sec);

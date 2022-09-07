@@ -3,12 +3,16 @@ import TokenStorage from './db/token.js';
 import Http from './network/http.js';
 import Auth from './service/auth.js';
 import Search from './service/search.js';
+import Chart from './service/chart.js';
 
 const baseURL = 'http://127.0.0.1:8080'
 const http = new Http(baseURL);
+const chart = new Chart(http);
 const tokenStorage = new TokenStorage();
-const search = new Search();
 const auth = new Auth(http, tokenStorage);
+const search = new Search();
+
+
 
 intervalAuth(30000, loginVerify);
 
@@ -18,10 +22,12 @@ searchTab.addEventListener('click', () => {
 
 popularTab.addEventListener('click', () => {
     changePopularTab();
+    chart.changePopular();
 })
 
 newsongTab.addEventListener('click', () => {
     changeNewsongTab();
+    chart.changeNew();
 })
 
 bookmarkTab.addEventListener('click', () => {

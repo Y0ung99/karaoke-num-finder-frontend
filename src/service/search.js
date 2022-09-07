@@ -1,4 +1,4 @@
-import {listHTML, searchTxt, searchBtn, list, anchors, selectCompany, selectOptions } from './common.js';
+import {searchTxt, searchBtn, anchors, selectCompany, selectOptions, addSongsToList } from './common.js';
 
 export default class Search {
     constructor() {
@@ -6,7 +6,7 @@ export default class Search {
             this.search()
             .then(songs => {
                 const anchor = songs.pop();
-                list.innerHTML = songs.map(song => listHTML(song)).join('');
+                addSongsToList(songs);
                 anchors.innerHTML = this.createAnchors(anchor.page);
                 this.linkAnchors(anchor.page);
             });    
@@ -44,7 +44,7 @@ export default class Search {
                 this.search(i)
                 .then(songs => {
                     const anchor = songs.pop();
-                    list.innerHTML = songs.map(song => listHTML(song)).join('');
+                    addSongsToList(songs);
                     anchors.innerHTML = this.createAnchors(anchor.page);
                     this.linkAnchors(anchor.page);
                 })
