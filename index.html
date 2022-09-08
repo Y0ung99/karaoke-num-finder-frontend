@@ -10,25 +10,22 @@
       name="viewport"
       content="width=device-width, initial-scale=1.0"
     />
-    <script src="main.js" defer></script>
-    <link rel="stylesheet" href="style.css" />
+    <script src="src/main.js" type="module" defer></script>
+    <link rel="stylesheet" href="css/style.css" />
     <title>NumFinder</title>
   </head>
   <body>
+    <div class="in">
+      <button class="c_login">로그인</button>
+    </div>
+  
     <nav class="tab">
       <button class="searchTab">검색</button>
-      <button class="popularTab">인기차트</button>
+      <button class="popularTab">인기</button>
       <button class="newsongTab">신곡</button>
       <button class="bookmarkTab">북마크</button>
     </nav>
     <nav class="searchBar">
-      <select name="selectDate" id="selectDate">
-        <option value="2018">2018</option>
-        <option value="2019">2019</option>
-        <option value="2020">2020</option>
-        <option value="2021">2021</option>
-        <option value="2022">2022</option>
-      </select>
       <select
         name="selectCompany"
         id="selectCompany"
@@ -36,6 +33,11 @@
         <option value="kumyoung">금영</option>
         <option value="taejin">태진</option>
       </select>
+      <ul class="genreBtn">
+        <button class="kpop">한국</button>
+        <button class="jpop">일본</button>
+        <button class="pop">POP</button>
+      </ul>
       <select
         name="selectOptions"
         id="selectOptions"
@@ -48,6 +50,19 @@
     </nav>
     <ul class="anchors">
     </ul>
+    <div class="acception">
+      <main class="log-in">
+        <span class="welcome">로그인을 환영합니다!</span>
+        <div class="inputs">
+            <div class="username">USERNAME: <input type="text" class="usernameTxt"></div>
+            <div class="pass">PASS: <input type="text" class="passTxt"></div>
+            <div class="name">NAME: <input type="text" class="nameTxt"></div>
+            <div class="email">EMAIL: <input type="text" class="emailTxt"></div>
+        </div>
+        <span>회원가입을 하시겠습니까?</span><input type="checkbox" name="convertor" id="convertor">
+        <button class="submit login">로그인</button>
+    </main>
+    </div>
     <main class="main">
       <div class="list">
       </div>
