@@ -4,6 +4,7 @@ export const newsongTab = document.querySelector('.newsongTab');
 export const bookmarkTab = document.querySelector('.bookmarkTab');
 export const loginTab = document.querySelector('.c_login');
 export const genreBtn = document.querySelector('.genreBtn');
+export const newBtn = document.querySelector('.newBtn');
 export const acception = document.querySelector('.acception')
 export const email = document.querySelector('.email');
 export const name = document.querySelector('.name')
@@ -71,13 +72,15 @@ export function hideMain() {
 export function changePopularTab() {
     hideSearchBar();
     selectCompany.style.display = 'inline-block';
+    newBtn.style.display = 'none';
     genreBtn.style.display = 'inline-block';
 }
 
 export function changeNewsongTab() {
     hideSearchBar();
     selectCompany.style.display = 'inline-block';
-    genreBtn.style.display = 'inline-block';
+    genreBtn.style.display = 'none';
+    newBtn.style.display = 'inline-block';
 }
 
 export function changeBookmarkTab() {

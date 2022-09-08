@@ -42,7 +42,13 @@ body {
 .tab {
     padding: 8px 0px;
 }
+
 .genreBtn {
+    display: none;
+    margin: 0;
+    padding: 0;
+}
+.newBtn {
     display: none;
     margin: 0;
     padding: 0;
