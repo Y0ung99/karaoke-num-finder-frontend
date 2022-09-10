@@ -1,3 +1,4 @@
+export const logo = document.querySelector('.logo');
 export const searchTab = document.querySelector('.searchTab');
 export const popularTab = document.querySelector('.popularTab');
 export const newsongTab = document.querySelector('.newsongTab');

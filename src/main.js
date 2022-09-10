@@ -1,4 +1,4 @@
-import { searchTab, popularTab, newsongTab, bookmarkTab, loginTab, changeBookmarkTab, changePopularTab, changeNewsongTab, acception, hideSearchBar, hideMain, hideTabs, intervalAuth, hideNameEmail, convertor, viewNameEmail, welcome, submit, hideGenreBtn} from './service/common.js';
+import { logo, searchTab, popularTab, newsongTab, bookmarkTab, loginTab, changeBookmarkTab, changePopularTab, changeNewsongTab, acception, hideSearchBar, hideMain, hideTabs, intervalAuth, hideNameEmail, convertor, viewNameEmail, welcome, submit, hideGenreBtn} from './service/common.js';
 import TokenStorage from './db/token.js';
 import Http from './network/http.js';
 import Auth from './service/auth.js';
@@ -12,9 +12,11 @@ const tokenStorage = new TokenStorage();
 const auth = new Auth(http, tokenStorage);
 const search = new Search();
 
-
-
 intervalAuth(30000, loginVerify);
+
+logo.addEventListener('click', () => {
+    location.reload();
+})
 
 searchTab.addEventListener('click', () => {
     location.reload();
