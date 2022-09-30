@@ -1,9 +1,11 @@
+export const logo = document.querySelector('.logo');
 export const searchTab = document.querySelector('.searchTab');
 export const popularTab = document.querySelector('.popularTab');
 export const newsongTab = document.querySelector('.newsongTab');
 export const bookmarkTab = document.querySelector('.bookmarkTab');
 export const loginTab = document.querySelector('.c_login');
 export const genreBtn = document.querySelector('.genreBtn');
+export const newBtn = document.querySelector('.newBtn');
 export const acception = document.querySelector('.acception')
 export const email = document.querySelector('.email');
 export const name = document.querySelector('.name')
@@ -59,6 +61,10 @@ export function hideNameEmail() {
     email.style.display = 'none';
 }
 
+export function hideAnchors() {
+    anchors.style.display = 'none';
+}
+
 export function viewNameEmail() {
     name.style.display = 'block';
     email.style.display = 'block';
@@ -71,13 +77,15 @@ export function hideMain() {
 export function changePopularTab() {
     hideSearchBar();
     selectCompany.style.display = 'inline-block';
+    newBtn.style.display = 'none';
     genreBtn.style.display = 'inline-block';
 }
 
 export function changeNewsongTab() {
     hideSearchBar();
     selectCompany.style.display = 'inline-block';
-    genreBtn.style.display = 'inline-block';
+    genreBtn.style.display = 'none';
+    newBtn.style.display = 'inline-block';
 }
 
 export function changeBookmarkTab() {
@@ -87,6 +95,20 @@ export function changeBookmarkTab() {
 
 export function addSongsToList(songs) {
     list.innerHTML = songs.map(song => listHTML(song)).join('');
+}
+
+export function createPageButton(songs) {
+    anchors.innerHTML = '';
+    for(let i = 1; i <= Math.ceil(songs.length / 100); i++) {
+        const pageBtn = document.createElement('button');
+        pageBtn.innerText = i;
+        pageBtn.setAttribute('page', `${i}`);
+        pageBtn.addEventListener('click', () => {
+            let start = 1 + (i - 1) * 100;
+            addSongsToList(songs.slice(start - 1, i * 100 - 1));
+        });
+        anchors.appendChild(pageBtn);
+    }
 }
 
 export function intervalAuth(sec, func) {
