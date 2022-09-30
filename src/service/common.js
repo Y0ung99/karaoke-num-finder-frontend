@@ -93,6 +93,20 @@ export function addSongsToList(songs) {
     list.innerHTML = songs.map(song => listHTML(song)).join('');
 }
 
+export function createPageButton(songs) {
+    anchors.innerHTML = '';
+    for(let i = 1; i <= Math.ceil(songs.length / 100); i++) {
+        const pageBtn = document.createElement('button');
+        pageBtn.innerText = i;
+        pageBtn.setAttribute('page', `${i}`);
+        pageBtn.addEventListener('click', () => {
+            let start = 1 + (i - 1) * 100;
+            addSongsToList(songs.slice(start - 1, i * 100 - 1));
+        });
+        anchors.appendChild(pageBtn);
+    }
+}
+
 export function intervalAuth(sec, func) {
     func();
     return setInterval(func, sec);
