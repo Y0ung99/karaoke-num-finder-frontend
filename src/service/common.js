@@ -61,6 +61,10 @@ export function hideNameEmail() {
     email.style.display = 'none';
 }
 
+export function hideAnchors() {
+    anchors.style.display = 'none';
+}
+
 export function viewNameEmail() {
     name.style.display = 'block';
     email.style.display = 'block';
