@@ -81,6 +81,7 @@ export function hideMain() {
 
 export function changePopularTab() {
     hideSearchBar();
+    clearList();
     selectCompany.style.display = 'inline-block';
     newBtn.style.display = 'none';
     genreBtn.style.display = 'inline-block';
@@ -88,6 +89,7 @@ export function changePopularTab() {
 
 export function changeNewsongTab() {
     hideSearchBar();
+    clearList();
     selectCompany.style.display = 'inline-block';
     genreBtn.style.display = 'none';
     newBtn.style.display = 'inline-block';
@@ -96,6 +98,7 @@ export function changeNewsongTab() {
 export function changeBookmarkTab() {
     hideSearchBar();
     hideGenreBtn();
+    clearList();
     newBtn.style.display = 'none';
     
 }
@@ -116,6 +119,10 @@ export function createPageButton(songs) {
         });
         anchors.appendChild(pageBtn);
     }
+}
+
+export function clearList() {
+    list.innerHTML = '';
 }
 
 export function intervalAuth(sec, func) {
