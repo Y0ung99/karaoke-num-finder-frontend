@@ -1,9 +1,10 @@
-import { logo, searchTab, popularTab, newsongTab, bookmarkTab, loginTab, changeBookmarkTab, changePopularTab, changeNewsongTab, acception, hideSearchBar, hideMain, hideTabs, intervalAuth, hideNameEmail, convertor, viewNameEmail, welcome, submit, hideGenreBtn, hideAnchors, hideDivider} from './service/common.js';
+import { logo, searchTab, popularTab, newsongTab, bookmarkTab, loginTab, changeBookmarkTab, changePopularTab, changeNewsongTab, acception, hideSearchBar, hideMain, hideTabs, intervalAuth, hideNameEmail, convertor, viewNameEmail, welcome, submit, hideGenreBtn, hideAnchors} from './service/common.js';
 import TokenStorage from './db/token.js';
 import Http from './network/http.js';
 import Auth from './service/auth.js';
 import Search from './service/search.js';
 import Chart from './service/chart.js';
+import Bookmark from './service/bookmark.js';
 
 const baseURL = 'http://127.0.0.1:8080'
 const http = new Http(baseURL);
@@ -11,6 +12,7 @@ const chart = new Chart(http);
 const tokenStorage = new TokenStorage();
 const auth = new Auth(http, tokenStorage);
 const search = new Search();
+const bookmark = new Bookmark(auth.me(), tokenStorage);
 
 intervalAuth(30000, loginVerify);
 
@@ -32,9 +34,9 @@ newsongTab.addEventListener('click', () => {
     chart.changeNew();
 })
 
-bookmarkTab.addEventListener('click', () => {
-    changeBookmarkTab();
-})
+// bookmarkTab.addEventListener('click', () => {
+//     changeBookmarkTab();
+// })
 
 
 convertor.addEventListener('change', (event) => {
@@ -56,7 +58,6 @@ const loginListener = () => {
     hideMain();
     hideAnchors();
     hideNameEmail();
-    hideDivider();
 
     acception.style.display = 'inherit';
 }

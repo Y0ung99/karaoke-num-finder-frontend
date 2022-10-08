@@ -21,17 +21,25 @@ export const submit = document.querySelector('.submit');
 export const anchors = document.querySelector('.anchors');
 export const selectCompany = document.querySelector('#selectCompany');
 export const selectOptions = document.querySelector('#selectOptions');
+let markerBtn;
+let deleteBtn;
 
 export function listHTML(song) {
     const {num, title, singer} = song;
     return `
     <div class="line">
-        <div class="num">${num}</div>
-        <div class="info">
-            <div class="title">
-            ${title}
+        <div class="song-info">
+            <div class="num">${num}</div>
+            <div class="info">
+                <div class="title">
+                ${title}
+                </div>
+                <div class="singer">${singer}</div>
             </div>
-            <div class="singer">${singer}</div>
+        </div>
+        <div class="marker">
+            <button class="marker-button" num="${num}" title="${title}" singer="${singer}">마크</button>
+            <button class="delete-button" num="${num}">삭제</button>
         </div>
     </div>
     <div class="list-divider"></div>  
@@ -64,10 +72,6 @@ export function hideNameEmail() {
 
 export function hideAnchors() {
     anchors.style.display = 'none';
-}
-
-export function hideDivider() {
-    divider.style.display = 'none';
 }
 
 export function viewNameEmail() {
@@ -103,19 +107,37 @@ export function changeBookmarkTab() {
     
 }
 
-export function addSongsToList(songs) {
-    list.innerHTML = songs.map(song => listHTML(song)).join('');
+export const addSongsToList = (songs, type) => {
+    list.innerHTML = songs.map((song) => listHTML(song)).join('');
+    markerBtn = document.getElementsByClassName('marker-button');
+    deleteBtn = document.getElementsByClassName('delete-button');
+    if (type === 'marker') hideDeleteBtn();
+    else if (type === 'delete') hideMarkerBtn();
 }
 
-export function createPageButton(songs) {
-    anchors.innerHTML = '';
+export function hideMarkerBtn() {
+    for(let i = 0; i < markerBtn.length; i++) {
+        markerBtn.item(i).style.display = 'none';
+        deleteBtn.item(i).style.display = 'inline-block';
+    }
+}
+
+export function hideDeleteBtn() {
+    for(let i = 0; i < markerBtn.length; i++) {
+        markerBtn.item(i).style.display = 'inline-block';
+        deleteBtn.item(i).style.display = 'none';
+    }
+}
+
+export function createPageButton(songs, type) {
+    clearList();
     for(let i = 1; i <= Math.ceil(songs.length / 100); i++) {
         const pageBtn = document.createElement('button');
         pageBtn.innerText = i;
         pageBtn.setAttribute('page', `${i}`);
         pageBtn.addEventListener('click', () => {
             let start = 1 + (i - 1) * 100;
-            addSongsToList(songs.slice(start - 1, i * 100 - 1));
+            addSongsToList(songs.slice(start - 1, i * 100 - 1), type);
         });
         anchors.appendChild(pageBtn);
     }
@@ -123,6 +145,7 @@ export function createPageButton(songs) {
 
 export function clearList() {
     list.innerHTML = '';
+    anchors.innerHTML = '';
 }
 
 export function intervalAuth(sec, func) {
