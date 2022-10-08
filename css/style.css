@@ -156,3 +156,14 @@ body {
     display: none;
 
 }
+
+.marker-button,
+.delete-button {
+    border-style: none;
+    font-size: 25px;
+}
+
+.marker-button:hover,
+.delete-button:hover {
+    cursor: pointer;
+}

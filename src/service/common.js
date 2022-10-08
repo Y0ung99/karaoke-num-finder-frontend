@@ -38,8 +38,8 @@ export function listHTML(song) {
             </div>
         </div>
         <div class="marker">
-            <button class="marker-button" num="${num}" title="${title}" singer="${singer}">마크</button>
-            <button class="delete-button" num="${num}">삭제</button>
+            <i class="marker-button fa-sharp fa-solid fa-star" num="${num}" title="${title}" singer="${singer}"></i>
+            <i class="delete-button fa-solid fa-trash" num="${num}"></i>
         </div>
     </div>
     <div class="list-divider"></div>  

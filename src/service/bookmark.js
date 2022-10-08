@@ -7,10 +7,10 @@ export default class Bookmark {
 
         list.onclick = event => {
             let target = event.target;
-            if (target.className === 'marker-button') {
+            if (target.className === 'marker-button fa-sharp fa-solid fa-star') {
                 this.addSongsToUser(target.getAttribute('num'), target.getAttribute('title'), target.getAttribute('singer'));
             }
-            else if (target.className === 'delete-button') {
+            else if (target.className === 'delete-button fa-solid fa-trash') {
                 this.deleteSongsToUser(target.getAttribute('num'));
             }
         }
