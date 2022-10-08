@@ -8,6 +8,7 @@ export const genreBtn = document.querySelector('.genreBtn');
 export const newBtn = document.querySelector('.newBtn');
 export const acception = document.querySelector('.acception')
 export const email = document.querySelector('.email');
+export const listdivider = document.querySelector('.list-divider');
 export const name = document.querySelector('.name')
 export const welcome = document.querySelector('.welcome');
 export const convertor = document.querySelector('#convertor');
@@ -33,7 +34,7 @@ export function listHTML(song) {
             <div class="singer">${singer}</div>
         </div>
     </div>
-    <div class="divider"></div>  
+    <div class="list-divider"></div>  
 `
 }
 
@@ -65,6 +66,10 @@ export function hideAnchors() {
     anchors.style.display = 'none';
 }
 
+export function hideDivider() {
+    divider.style.display = 'none';
+}
+
 export function viewNameEmail() {
     name.style.display = 'block';
     email.style.display = 'block';
@@ -91,6 +96,8 @@ export function changeNewsongTab() {
 export function changeBookmarkTab() {
     hideSearchBar();
     hideGenreBtn();
+    newBtn.style.display = 'none';
+    
 }
 
 export function addSongsToList(songs) {
