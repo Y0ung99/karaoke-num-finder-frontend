@@ -27,7 +27,7 @@ export default class Chart {
             },
             body: JSON.stringify({ company }),
         });
-        response.json().then(songs => addSongsToList(songs));
+        response.json().then(songs => addSongsToList(songs, 'marker'));
     }
     async jPopular() {
         const company = selectCompany.value;
@@ -38,7 +38,7 @@ export default class Chart {
             },
             body: JSON.stringify({ company }),
         });
-        response.json().then(songs => addSongsToList(songs));
+        response.json().then(songs => addSongsToList(songs, 'marker'));
     } 
 
     async pPopular() {
@@ -50,7 +50,7 @@ export default class Chart {
             },
             body: JSON.stringify({ company }),
         });
-        response.json().then(songs => addSongsToList(songs));
+        response.json().then(songs => addSongsToList(songs, 'marker'));
     }
 
     async newsong() {
@@ -62,6 +62,6 @@ export default class Chart {
             },
             body: JSON.stringify({ company }),
         });
-        response.json().then(songs => addSongsToList(songs));
+        response.json().then(songs => addSongsToList(songs, 'marker'));
     }
 }

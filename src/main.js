@@ -4,6 +4,7 @@ import Http from './network/http.js';
 import Auth from './service/auth.js';
 import Search from './service/search.js';
 import Chart from './service/chart.js';
+import Bookmark from './service/bookmark.js';
 
 const baseURL = 'http://127.0.0.1:8080'
 const http = new Http(baseURL);
@@ -11,6 +12,7 @@ const chart = new Chart(http);
 const tokenStorage = new TokenStorage();
 const auth = new Auth(http, tokenStorage);
 const search = new Search();
+const bookmark = new Bookmark(auth.me(), tokenStorage);
 
 intervalAuth(30000, loginVerify);
 
@@ -32,9 +34,9 @@ newsongTab.addEventListener('click', () => {
     chart.changeNew();
 })
 
-bookmarkTab.addEventListener('click', () => {
-    changeBookmarkTab();
-})
+// bookmarkTab.addEventListener('click', () => {
+//     changeBookmarkTab();
+// })
 
 
 convertor.addEventListener('change', (event) => {

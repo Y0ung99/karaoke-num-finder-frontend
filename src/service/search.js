@@ -4,9 +4,8 @@ export default class Search {
     constructor() {
         searchBtn.addEventListener('click', async () => {
             const songs = await this.search();
-            console.log(songs);
-            createPageButton(songs);
-            addSongsToList(songs.slice(0, 99));
+            createPageButton(songs, 'marker');
+            addSongsToList(songs.slice(0, 99), 'marker');
         });
     }
 

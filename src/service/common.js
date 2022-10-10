@@ -8,6 +8,7 @@ export const genreBtn = document.querySelector('.genreBtn');
 export const newBtn = document.querySelector('.newBtn');
 export const acception = document.querySelector('.acception')
 export const email = document.querySelector('.email');
+export const listdivider = document.querySelector('.list-divider');
 export const name = document.querySelector('.name')
 export const welcome = document.querySelector('.welcome');
 export const convertor = document.querySelector('#convertor');
@@ -20,20 +21,28 @@ export const submit = document.querySelector('.submit');
 export const anchors = document.querySelector('.anchors');
 export const selectCompany = document.querySelector('#selectCompany');
 export const selectOptions = document.querySelector('#selectOptions');
+let markerBtn;
+let deleteBtn;
 
 export function listHTML(song) {
     const {num, title, singer} = song;
     return `
     <div class="line">
-        <div class="num">${num}</div>
-        <div class="info">
-            <div class="title">
-            ${title}
+        <div class="song-info">
+            <div class="num">${num}</div>
+            <div class="info">
+                <div class="title">
+                ${title}
+                </div>
+                <div class="singer">${singer}</div>
             </div>
-            <div class="singer">${singer}</div>
+        </div>
+        <div class="marker">
+            <i class="marker-button fa-sharp fa-solid fa-star" num="${num}" title="${title}" singer="${singer}"></i>
+            <i class="delete-button fa-solid fa-trash" num="${num}"></i>
         </div>
     </div>
-    <div class="divider"></div>  
+    <div class="list-divider"></div>  
 `
 }
 
@@ -76,6 +85,7 @@ export function hideMain() {
 
 export function changePopularTab() {
     hideSearchBar();
+    clearList();
     selectCompany.style.display = 'inline-block';
     newBtn.style.display = 'none';
     genreBtn.style.display = 'inline-block';
@@ -83,6 +93,7 @@ export function changePopularTab() {
 
 export function changeNewsongTab() {
     hideSearchBar();
+    clearList();
     selectCompany.style.display = 'inline-block';
     genreBtn.style.display = 'none';
     newBtn.style.display = 'inline-block';
@@ -91,24 +102,50 @@ export function changeNewsongTab() {
 export function changeBookmarkTab() {
     hideSearchBar();
     hideGenreBtn();
+    clearList();
+    newBtn.style.display = 'none';
+    
 }
 
-export function addSongsToList(songs) {
-    list.innerHTML = songs.map(song => listHTML(song)).join('');
+export const addSongsToList = (songs, type) => {
+    list.innerHTML = songs.map((song) => listHTML(song)).join('');
+    markerBtn = document.getElementsByClassName('marker-button');
+    deleteBtn = document.getElementsByClassName('delete-button');
+    if (type === 'marker') hideDeleteBtn();
+    else if (type === 'delete') hideMarkerBtn();
 }
 
-export function createPageButton(songs) {
-    anchors.innerHTML = '';
+export function hideMarkerBtn() {
+    for(let i = 0; i < markerBtn.length; i++) {
+        markerBtn.item(i).style.display = 'none';
+        deleteBtn.item(i).style.display = 'inline-block';
+    }
+}
+
+export function hideDeleteBtn() {
+    for(let i = 0; i < markerBtn.length; i++) {
+        markerBtn.item(i).style.display = 'inline-block';
+        deleteBtn.item(i).style.display = 'none';
+    }
+}
+
+export function createPageButton(songs, type) {
+    clearList();
     for(let i = 1; i <= Math.ceil(songs.length / 100); i++) {
         const pageBtn = document.createElement('button');
         pageBtn.innerText = i;
         pageBtn.setAttribute('page', `${i}`);
         pageBtn.addEventListener('click', () => {
             let start = 1 + (i - 1) * 100;
-            addSongsToList(songs.slice(start - 1, i * 100 - 1));
+            addSongsToList(songs.slice(start - 1, i * 100 - 1), type);
         });
         anchors.appendChild(pageBtn);
     }
+}
+
+export function clearList() {
+    list.innerHTML = '';
+    anchors.innerHTML = '';
 }
 
 export function intervalAuth(sec, func) {
