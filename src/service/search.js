@@ -14,7 +14,7 @@ export default class Search {
         const company = selectCompany.value;
         const option = selectOptions.value;
         const data = {text, company, option};
-        const response = await fetch('http://127.0.0.1:8080/search', {
+        const response = await fetch('https://karanum-dy.herokuapp.com/search', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'

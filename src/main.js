@@ -6,7 +6,7 @@ import Search from './service/search.js';
 import Chart from './service/chart.js';
 import Bookmark from './service/bookmark.js';
 
-const baseURL = 'http://127.0.0.1:8080'
+const baseURL = 'https://karanum-dy.herokuapp.com';
 const http = new Http(baseURL);
 const chart = new Chart(http);
 const tokenStorage = new TokenStorage();
