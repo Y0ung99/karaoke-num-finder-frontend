@@ -166,3 +166,9 @@ body {
 .delete-button:hover {
     cursor: pointer;
 }
+
+.waiting {
+    display: none;
+    height: 30px;
+    width: 30px;
+}

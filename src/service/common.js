@@ -21,6 +21,8 @@ export const submit = document.querySelector('.submit');
 export const anchors = document.querySelector('.anchors');
 export const selectCompany = document.querySelector('#selectCompany');
 export const selectOptions = document.querySelector('#selectOptions');
+export const waitingUI = document.querySelector('.waiting');
+
 let markerBtn;
 let deleteBtn;
 
@@ -113,6 +115,7 @@ export const addSongsToList = (songs, type) => {
     deleteBtn = document.getElementsByClassName('delete-button');
     if (type === 'marker') hideDeleteBtn();
     else if (type === 'delete') hideMarkerBtn();
+    hideWaitingUI();
 }
 
 export function hideMarkerBtn() {
@@ -151,4 +154,12 @@ export function clearList() {
 export function intervalAuth(sec, func) {
     func();
     return setInterval(func, sec);
+}
+
+export function viewWaitingUI() {
+    waitingUI.style.display = 'inline';
+}
+
+export function hideWaitingUI() {
+    waitingUI.style.display = 'none';
 }
