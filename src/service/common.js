@@ -7,9 +7,11 @@ export const loginTab = document.querySelector('.c_login');
 export const genreBtn = document.querySelector('.genreBtn');
 export const newBtn = document.querySelector('.newBtn');
 export const acception = document.querySelector('.acception')
-export const email = document.querySelector('.email');
-export const listdivider = document.querySelector('.list-divider');
 export const name = document.querySelector('.name')
+export const email = document.querySelector('.email');
+export const nameTxt = document.querySelector('.nameTxt')
+export const emailTxt = document.querySelector('.emailTxt');
+export const listdivider = document.querySelector('.list-divider');
 export const welcome = document.querySelector('.welcome');
 export const convertor = document.querySelector('#convertor');
 export const selectDate = document.querySelector('#selectDate');
@@ -70,6 +72,8 @@ export function hideTabs() {
 export function hideNameEmail() {
     name.style.display = 'none';
     email.style.display = 'none';
+    nameTxt.style.display = 'none';
+    emailTxt.style.display = 'none';
 }
 
 export function hideAnchors() {
@@ -79,6 +83,8 @@ export function hideAnchors() {
 export function viewNameEmail() {
     name.style.display = 'block';
     email.style.display = 'block';
+    nameTxt.style.display = 'inline-block';
+    emailTxt.style.display = 'inline-block';
 }
 
 export function hideMain() {

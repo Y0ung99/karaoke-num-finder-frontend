@@ -126,25 +126,49 @@ body {
     margin: 6px 0px;
 }
 
-.log-in,
-.sign-in {
+.log-in {
     padding: 8px 0px;
+}
+
+.form {
+    display: flex;
+    justify-content: center;
+    align-items: baseline;
 }
 
 .welcome {
     display: block;
     margin-bottom: 4px;
 }
+.description {
+    display: flex;
+    flex-direction: column;
+}
+
+.description > div {
+    margin-bottom: 2px;
+    margin-right: 4px;
+    text-align: right;
+}
+
+.inputs {
+    display: flex;
+    flex-direction: column;
+}
 
 .username {
-    position: relative;
-    left: -18px;
-    
+
 }
 
 .pass {
-    position: relative;
-    left: 4px;
+
+}
+
+.name,
+.email,
+.nameTxt,
+.emailTxt {
+    display: none;
 }
 
 .submit {
