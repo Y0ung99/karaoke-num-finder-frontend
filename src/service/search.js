@@ -1,8 +1,9 @@
-import {searchTxt, searchBtn, anchors, selectCompany, selectOptions, addSongsToList, createPageButton} from './common.js';
+import {searchTxt, searchBtn, anchors, selectCompany, selectOptions, addSongsToList, createPageButton, viewWaitingUI, hideWaitingUI} from './common.js';
 
 export default class Search {
     constructor() {
         searchBtn.addEventListener('click', async () => {
+            viewWaitingUI();
             const songs = await this.search();
             createPageButton(songs, 'marker');
             addSongsToList(songs.slice(0, 99), 'marker');

@@ -1,4 +1,4 @@
-import { addSongsToList, bookmarkTab, changeBookmarkTab, createPageButton, list } from './common.js';
+import { addSongsToList, bookmarkTab, changeBookmarkTab, createPageButton, hideWaitingUI, list, viewWaitingUI } from './common.js';
 
 export default class Bookmark {
     constructor(me, tokenStorage) {
@@ -22,6 +22,7 @@ export default class Bookmark {
     async showBookmarks() {
         if (await this.me instanceof Error) return alert('로그인 하셔야 사용할 수 있는 기능입니다.');
         changeBookmarkTab();
+        viewWaitingUI();
         const songs = await this.fetchSongToUser();
         createPageButton(songs, 'delete');
         addSongsToList(songs.slice(0, 99), 'delete');
