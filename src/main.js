@@ -1,4 +1,4 @@
-import { logo, searchTab, popularTab, newsongTab, bookmarkTab, loginTab, changeBookmarkTab, changePopularTab, changeNewsongTab, acception, hideSearchBar, hideMain, hideTabs, intervalAuth, hideNameEmail, convertor, viewNameEmail, welcome, submit, hideGenreBtn, hideAnchors} from './service/common.js';
+import { logo, searchTab, popularTab, newsongTab, bookmarkTab, loginTab, changeBookmarkTab, changePopularTab, changeNewsongTab, acception, hideSearchBar, hideMain, hideTabs, intervalAuth, hideNameEmail, convertor, viewNameEmail, welcome, submit, hideGenreBtn, hideAnchors, hideNewBtn} from './service/common.js';
 import TokenStorage from './db/token.js';
 import Http from './network/http.js';
 import Auth from './service/auth.js';
@@ -58,8 +58,8 @@ const loginListener = () => {
     hideMain();
     hideAnchors();
     hideNameEmail();
-
-    acception.style.display = 'inherit';
+    hideNewBtn();
+    acception.style.display = 'block';
 }
 
 const logoutListenr = () => {

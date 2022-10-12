@@ -89,23 +89,23 @@ export function changePopularTab() {
     hideSearchBar();
     clearList();
     selectCompany.style.display = 'inline-block';
-    newBtn.style.display = 'none';
+    hideNewBtn();
     genreBtn.style.display = 'inline-block';
 }
 
 export function changeNewsongTab() {
     hideSearchBar();
     clearList();
+    viewNewBtn();
     selectCompany.style.display = 'inline-block';
     genreBtn.style.display = 'none';
-    newBtn.style.display = 'inline-block';
 }
 
 export function changeBookmarkTab() {
     hideSearchBar();
     hideGenreBtn();
     clearList();
-    newBtn.style.display = 'none';
+    hideNewBtn();
     
 }
 
@@ -130,6 +130,14 @@ export function hideDeleteBtn() {
         markerBtn.item(i).style.display = 'inline-block';
         deleteBtn.item(i).style.display = 'none';
     }
+}
+
+export function hideNewBtn(){
+    newBtn.style.display = 'none';
+}
+
+export function viewNewBtn(){
+    newBtn.style.display = 'inline-block';
 }
 
 export function createPageButton(songs, type) {
