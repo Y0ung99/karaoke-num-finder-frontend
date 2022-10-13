@@ -1,12 +1,7 @@
-import {searchTxt, searchBtn, selectCompany, selectOptions, addSongsToList, createPageButton, viewWaitingUI, clearList, hideWaitingUI} from './common.js';
+import {searchTxt, searchBtn, selectCompany, selectOptions, addSongsToList, createPageButton, viewWaitingUI, clearList, hideWaitingUI, list} from './common.js';
 
 export default class Search {
     constructor() {
-        searchBtn.addEventListener('click', async () => {
-            viewWaitingUI();
-            await this.search();
-        });
-        this.abort = new AbortController();
     }
 
     async getMaxPage(data) {
@@ -17,7 +12,6 @@ export default class Search {
             },
             body: JSON.stringify(data),
         });
-
         if (response.status >= 400) {
             hideWaitingUI();
             return alert('검색결과를 찾을 수 없습니다.');
@@ -26,7 +20,7 @@ export default class Search {
         return response.json().then(value => value.pageNum);
     }
 
-    async search() { // 
+    async search(abort) { // 
         const text = searchTxt.value;
         const company = selectCompany.value;
         const option = selectOptions.value;
@@ -45,8 +39,8 @@ export default class Search {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify(data),
-            }, this.abort.signal);
-            if (this.abort.signal.aborted) break;
+            }, abort.signal);
+            if (abort.signal.aborted) break;
             response.json().then(songs => addSongsToList(songs, 'marker'));
         }
     }

@@ -1,4 +1,4 @@
-import { logo, searchTab, popularTab, newsongTab, bookmarkTab, loginTab, changeBookmarkTab, changePopularTab, changeNewsongTab, acception, hideSearchBar, hideMain, hideTabs, intervalAuth, hideNameEmail, convertor, viewNameEmail, welcome, submit, hideGenreBtn, hideAnchors, hideNewBtn} from './service/common.js';
+import { logo, searchTab, popularTab, newsongTab, bookmarkTab, loginTab, changeBookmarkTab, changePopularTab, changeNewsongTab, acception, hideSearchBar, hideMain, hideTabs, intervalAuth, hideNameEmail, convertor, viewNameEmail, welcome, submit, hideGenreBtn, hideAnchors, hideNewBtn, searchBtn, selectCompany, selectOptions, hideWaitingUI, viewWaitingUI, clearList} from './service/common.js';
 import TokenStorage from './db/token.js';
 import Http from './network/http.js';
 import Auth from './service/auth.js';
@@ -13,6 +13,7 @@ const auth = new Auth(http, tokenStorage);
 const search = new Search();
 const chart = new Chart(http);
 const bookmark = new Bookmark(auth.me(), tokenStorage);
+let controller;
 
 intervalAuth(30000, loginVerify);
 
@@ -26,13 +27,13 @@ searchTab.addEventListener('click', () => {
 
 popularTab.addEventListener('click', () => {
     changePopularTab();
-    search.abort.abort();
+    controller.abort();
     chart.changePopular();
 });
 
 newsongTab.addEventListener('click', () => {
     changeNewsongTab();
-    search.abort.abort();
+    controller.abort();
     chart.changeNew();
 });
 
@@ -47,6 +48,25 @@ convertor.addEventListener('change', (event) => {
         submit.innerHTML = '로그인';
     }
 });
+
+searchBtn.addEventListener('click', async () => {
+    clearList();
+    controller = new AbortController();
+    viewWaitingUI();
+    await search.search(controller);
+});
+
+selectCompany.addEventListener('change', () => {
+    controller.abort();
+    hideWaitingUI();
+
+});
+
+selectOptions.addEventListener('change', () => {
+    controller.abort();
+    hideWaitingUI();
+});
+
 
 const loginListener = () => {
     hideSearchBar();
