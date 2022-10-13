@@ -29,7 +29,7 @@ export default class Bookmark {
     }
 
     async fetchSongToUser() {
-        const response = await fetch('http://127.0.0.1:8080/bookmark', {
+        const response = await fetch('https://karanum-dy.herokuapp.com/bookmark', {
             method: 'GET',
             headers: this.getHeaders(),
         });
@@ -41,7 +41,7 @@ export default class Bookmark {
         const me = await this.me;
         const data = {num, title, singer};
         
-        const response = await fetch('http://127.0.0.1:8080/bookmark', {
+        const response = await fetch('https://karanum-dy.herokuapp.com/bookmark', {
             method: 'POST',
             headers: this.getHeaders(),
             body: JSON.stringify(data),
@@ -56,7 +56,7 @@ export default class Bookmark {
         const me = await this.me;
         const data = {num};
         
-        const response = await fetch('http://127.0.0.1:8080/bookmark', {
+        const response = await fetch('https://karanum-dy.herokuapp.com/bookmark', {
             method: 'DELETE',
             headers: this.getHeaders(),
             body: JSON.stringify(data),
