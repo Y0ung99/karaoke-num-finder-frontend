@@ -18,26 +18,23 @@ intervalAuth(30000, loginVerify);
 
 logo.addEventListener('click', () => {
     location.reload();
-})
+});
 
 searchTab.addEventListener('click', () => {
     location.reload();
-})
+});
 
 popularTab.addEventListener('click', () => {
     changePopularTab();
+    search.abort.abort();
     chart.changePopular();
-})
+});
 
 newsongTab.addEventListener('click', () => {
     changeNewsongTab();
+    search.abort.abort();
     chart.changeNew();
-})
-
-// bookmarkTab.addEventListener('click', () => {
-//     changeBookmarkTab();
-// })
-
+});
 
 convertor.addEventListener('change', (event) => {
     if (event.target.checked) {
