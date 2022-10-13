@@ -25,6 +25,7 @@ export const selectCompany = document.querySelector('#selectCompany');
 export const selectOptions = document.querySelector('#selectOptions');
 export const waitingUI = document.querySelector('.waiting');
 
+export const store = [];
 let markerBtn;
 let deleteBtn;
 
@@ -46,7 +47,7 @@ export function listHTML(song) {
             <i class="delete-button fa-solid fa-trash" num="${num}"></i>
         </div>
     </div>
-    <div class="list-divider"></div>  
+    <div class="list-divider"></div>
 `
 }
 
@@ -116,11 +117,18 @@ export function changeBookmarkTab() {
 }
 
 export const addSongsToList = (songs, type) => {
-    list.innerHTML = songs.map((song) => listHTML(song)).join('');
+    songs.map(song => {
+        const isExist = store.some(s_song => s_song.num === song.num);
+        if (!isExist) store.push(song);
+    });
+    list.innerHTML = store.map(song => listHTML(song)).join('');
+    
     markerBtn = document.getElementsByClassName('marker-button');
     deleteBtn = document.getElementsByClassName('delete-button');
+
     if (type === 'marker') hideDeleteBtn();
     else if (type === 'delete') hideMarkerBtn();
+    
     hideWaitingUI();
 }
 
@@ -162,6 +170,7 @@ export function createPageButton(songs, type) {
 
 export function clearList() {
     list.innerHTML = '';
+    store.length = 1;
     anchors.innerHTML = '';
 }
 
