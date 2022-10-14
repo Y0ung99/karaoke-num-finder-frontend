@@ -55,6 +55,7 @@ searchBtn.addEventListener('click', async () => {
     controller = new AbortController();
     viewWaitingUI();
     await search.search(controller);
+    hideWaitingUI();
 });
 
 selectCompany.addEventListener('change', () => {
