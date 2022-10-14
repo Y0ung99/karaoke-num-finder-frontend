@@ -20,7 +20,6 @@ export const searchBtn = document.querySelector('.searchBtn');
 export const main = document.querySelector('.main');
 export const list = document.querySelector('.list');
 export const submit = document.querySelector('.submit');
-export const anchors = document.querySelector('.anchors');
 export const selectCompany = document.querySelector('#selectCompany');
 export const selectOptions = document.querySelector('#selectOptions');
 export const waitingUI = document.querySelector('.waiting');
@@ -113,7 +112,6 @@ export function changeBookmarkTab() {
     hideGenreBtn();
     clearList();
     hideNewBtn();
-    
 }
 
 export const addSongsToList = (songs, type) => {
@@ -154,24 +152,9 @@ export function viewNewBtn(){
     newBtn.style.display = 'inline-block';
 }
 
-export function createPageButton(songs, type) {
-    clearList();
-    for(let i = 1; i <= Math.ceil(songs.length / 100); i++) {
-        const pageBtn = document.createElement('button');
-        pageBtn.innerText = i;
-        pageBtn.setAttribute('page', `${i}`);
-        pageBtn.addEventListener('click', () => {
-            let start = 1 + (i - 1) * 100;
-            addSongsToList(songs.slice(start - 1, i * 100 - 1), type);
-        });
-        anchors.appendChild(pageBtn);
-    }
-}
-
 export function clearList() {
     list.innerHTML = '';
     store.length = 1;
-    anchors.innerHTML = '';
 }
 
 export function intervalAuth(sec, func) {
