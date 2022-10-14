@@ -1,4 +1,4 @@
-import { addSongsToList, bookmarkTab, changeBookmarkTab, createPageButton, hideWaitingUI, list, viewWaitingUI } from './common.js';
+import { addSongsToList, bookmarkTab, changeBookmarkTab, list, viewWaitingUI } from './common.js';
 
 export default class Bookmark {
     constructor(me, tokenStorage) {
@@ -24,8 +24,7 @@ export default class Bookmark {
         changeBookmarkTab();
         viewWaitingUI();
         const songs = await this.fetchSongToUser();
-        createPageButton(songs, 'delete');
-        addSongsToList(songs.slice(0, 99), 'delete');
+        addSongsToList(songs, 'delete');
     }
 
     async fetchSongToUser() {

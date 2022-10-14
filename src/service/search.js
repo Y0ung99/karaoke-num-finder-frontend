@@ -1,4 +1,4 @@
-import {searchTxt, searchBtn, selectCompany, selectOptions, addSongsToList, createPageButton, viewWaitingUI, clearList, hideWaitingUI, list} from './common.js';
+import {searchTxt, selectCompany, selectOptions, addSongsToList, clearList, hideWaitingUI} from './common.js';
 
 export default class Search {
     constructor() {

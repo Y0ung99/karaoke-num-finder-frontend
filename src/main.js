@@ -1,4 +1,4 @@
-import { logo, searchTab, popularTab, newsongTab, bookmarkTab, loginTab, changeBookmarkTab, changePopularTab, changeNewsongTab, acception, hideSearchBar, hideMain, hideTabs, intervalAuth, hideNameEmail, convertor, viewNameEmail, welcome, submit, hideGenreBtn, hideAnchors, hideNewBtn, searchBtn, selectCompany, selectOptions, hideWaitingUI, viewWaitingUI, clearList} from './service/common.js';
+import { logo, searchTab, popularTab, newsongTab, loginTab, changePopularTab, changeNewsongTab, acception, hideSearchBar, hideMain, hideTabs, intervalAuth, hideNameEmail, convertor, viewNameEmail, welcome, submit, hideGenreBtn, hideAnchors, hideNewBtn, searchBtn, selectCompany, selectOptions, hideWaitingUI, viewWaitingUI, clearList} from './service/common.js';
 import TokenStorage from './db/token.js';
 import Http from './network/http.js';
 import Auth from './service/auth.js';
