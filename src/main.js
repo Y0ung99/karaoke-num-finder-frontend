@@ -27,14 +27,15 @@ searchTab.addEventListener('click', () => {
 
 popularTab.addEventListener('click', () => {
     changePopularTab();
-    controller.abort();
     chart.changePopular();
+    controller.abort();
 });
 
 newsongTab.addEventListener('click', () => {
     changeNewsongTab();
-    controller.abort();
     chart.changeNew();
+    controller.abort();
+    
 });
 
 convertor.addEventListener('change', (event) => {
