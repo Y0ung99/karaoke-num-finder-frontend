@@ -1,4 +1,4 @@
-import { addSongsToList, selectCompany, viewWaitingUI } from './common.js';
+import { addSongsToList, clearList, selectCompany, viewWaitingUI } from './common.js';
 
 export default class Chart {
     constructor() {
@@ -7,7 +7,7 @@ export default class Chart {
         this.popBtn = document.querySelector('.pop');
         this.newBtn = document.querySelector('.newsong');
     }
-    add
+
     changePopular() {
         this.kpopBtn.addEventListener('click', this.kPopular);
         this.jpopBtn.addEventListener('click', this.jPopular);
@@ -20,6 +20,7 @@ export default class Chart {
 
     async kPopular() {
         viewWaitingUI();
+        clearList();
         const company = selectCompany.value;
         const response = await fetch('https://karanum-dy.herokuapp.com/chart/popular/kpop', {
             method: 'POST',
@@ -32,6 +33,7 @@ export default class Chart {
     }
     async jPopular() {
         viewWaitingUI();
+        clearList();
         const company = selectCompany.value;
         const response = await fetch('https://karanum-dy.herokuapp.com/chart/popular/jpop', {
             method: 'POST',
@@ -45,6 +47,7 @@ export default class Chart {
 
     async pPopular() {
         viewWaitingUI();
+        clearList();
         const company = selectCompany.value;
         const response = await fetch('https://karanum-dy.herokuapp.com/chart/popular/pop', {
             method: 'POST',
@@ -58,6 +61,7 @@ export default class Chart {
 
     async newsong() {
         viewWaitingUI();
+        clearList();
         const company = selectCompany.value;
         const response = await fetch('https://karanum-dy.herokuapp.com/chart/new', {
             method: 'POST',
