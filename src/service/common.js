@@ -7,9 +7,11 @@ export const loginTab = document.querySelector('.c_login');
 export const genreBtn = document.querySelector('.genreBtn');
 export const newBtn = document.querySelector('.newBtn');
 export const acception = document.querySelector('.acception')
-export const email = document.querySelector('.email');
-export const listdivider = document.querySelector('.list-divider');
 export const name = document.querySelector('.name')
+export const email = document.querySelector('.email');
+export const nameTxt = document.querySelector('.nameTxt')
+export const emailTxt = document.querySelector('.emailTxt');
+export const listdivider = document.querySelector('.list-divider');
 export const welcome = document.querySelector('.welcome');
 export const convertor = document.querySelector('#convertor');
 export const selectDate = document.querySelector('#selectDate');
@@ -21,6 +23,9 @@ export const submit = document.querySelector('.submit');
 export const anchors = document.querySelector('.anchors');
 export const selectCompany = document.querySelector('#selectCompany');
 export const selectOptions = document.querySelector('#selectOptions');
+export const waitingUI = document.querySelector('.waiting');
+
+export const store = [];
 let markerBtn;
 let deleteBtn;
 
@@ -42,7 +47,7 @@ export function listHTML(song) {
             <i class="delete-button fa-solid fa-trash" num="${num}"></i>
         </div>
     </div>
-    <div class="list-divider"></div>  
+    <div class="list-divider"></div>
 `
 }
 
@@ -68,6 +73,8 @@ export function hideTabs() {
 export function hideNameEmail() {
     name.style.display = 'none';
     email.style.display = 'none';
+    nameTxt.style.display = 'none';
+    emailTxt.style.display = 'none';
 }
 
 export function hideAnchors() {
@@ -77,6 +84,8 @@ export function hideAnchors() {
 export function viewNameEmail() {
     name.style.display = 'block';
     email.style.display = 'block';
+    nameTxt.style.display = 'inline-block';
+    emailTxt.style.display = 'inline-block';
 }
 
 export function hideMain() {
@@ -87,32 +96,40 @@ export function changePopularTab() {
     hideSearchBar();
     clearList();
     selectCompany.style.display = 'inline-block';
-    newBtn.style.display = 'none';
+    hideNewBtn();
     genreBtn.style.display = 'inline-block';
 }
 
 export function changeNewsongTab() {
     hideSearchBar();
     clearList();
+    viewNewBtn();
     selectCompany.style.display = 'inline-block';
     genreBtn.style.display = 'none';
-    newBtn.style.display = 'inline-block';
 }
 
 export function changeBookmarkTab() {
     hideSearchBar();
     hideGenreBtn();
     clearList();
-    newBtn.style.display = 'none';
+    hideNewBtn();
     
 }
 
 export const addSongsToList = (songs, type) => {
-    list.innerHTML = songs.map((song) => listHTML(song)).join('');
+    songs.map(song => {
+        const isExist = store.some(s_song => s_song.num === song.num);
+        if (!isExist) store.push(song);
+    });
+    list.innerHTML = store.map(song => listHTML(song)).join('');
+    
     markerBtn = document.getElementsByClassName('marker-button');
     deleteBtn = document.getElementsByClassName('delete-button');
+
     if (type === 'marker') hideDeleteBtn();
     else if (type === 'delete') hideMarkerBtn();
+    
+    hideWaitingUI();
 }
 
 export function hideMarkerBtn() {
@@ -127,6 +144,14 @@ export function hideDeleteBtn() {
         markerBtn.item(i).style.display = 'inline-block';
         deleteBtn.item(i).style.display = 'none';
     }
+}
+
+export function hideNewBtn(){
+    newBtn.style.display = 'none';
+}
+
+export function viewNewBtn(){
+    newBtn.style.display = 'inline-block';
 }
 
 export function createPageButton(songs, type) {
@@ -145,10 +170,19 @@ export function createPageButton(songs, type) {
 
 export function clearList() {
     list.innerHTML = '';
+    store.length = 1;
     anchors.innerHTML = '';
 }
 
 export function intervalAuth(sec, func) {
     func();
     return setInterval(func, sec);
+}
+
+export function viewWaitingUI() {
+    waitingUI.style.display = 'inline';
+}
+
+export function hideWaitingUI() {
+    waitingUI.style.display = 'none';
 }

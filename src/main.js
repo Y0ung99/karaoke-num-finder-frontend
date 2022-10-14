@@ -1,4 +1,4 @@
-import { logo, searchTab, popularTab, newsongTab, bookmarkTab, loginTab, changeBookmarkTab, changePopularTab, changeNewsongTab, acception, hideSearchBar, hideMain, hideTabs, intervalAuth, hideNameEmail, convertor, viewNameEmail, welcome, submit, hideGenreBtn, hideAnchors} from './service/common.js';
+import { logo, searchTab, popularTab, newsongTab, bookmarkTab, loginTab, changeBookmarkTab, changePopularTab, changeNewsongTab, acception, hideSearchBar, hideMain, hideTabs, intervalAuth, hideNameEmail, convertor, viewNameEmail, welcome, submit, hideGenreBtn, hideAnchors, hideNewBtn, searchBtn, selectCompany, selectOptions, hideWaitingUI, viewWaitingUI, clearList} from './service/common.js';
 import TokenStorage from './db/token.js';
 import Http from './network/http.js';
 import Auth from './service/auth.js';
@@ -6,38 +6,38 @@ import Search from './service/search.js';
 import Chart from './service/chart.js';
 import Bookmark from './service/bookmark.js';
 
-const baseURL = 'http://127.0.0.1:8080'
+// const baseURL = 'http://127.0.0.1:8080';
+const baseURL = 'https://karanum-dy.herokuapp.com';
 const http = new Http(baseURL);
-const chart = new Chart(http);
 const tokenStorage = new TokenStorage();
 const auth = new Auth(http, tokenStorage);
 const search = new Search();
+const chart = new Chart(http);
 const bookmark = new Bookmark(auth.me(), tokenStorage);
+let controller;
 
 intervalAuth(30000, loginVerify);
 
 logo.addEventListener('click', () => {
     location.reload();
-})
+});
 
 searchTab.addEventListener('click', () => {
     location.reload();
-})
+});
 
 popularTab.addEventListener('click', () => {
     changePopularTab();
     chart.changePopular();
-})
+    controller.abort();
+});
 
 newsongTab.addEventListener('click', () => {
     changeNewsongTab();
     chart.changeNew();
-})
-
-// bookmarkTab.addEventListener('click', () => {
-//     changeBookmarkTab();
-// })
-
+    controller.abort();
+    
+});
 
 convertor.addEventListener('change', (event) => {
     if (event.target.checked) {
@@ -51,6 +51,26 @@ convertor.addEventListener('change', (event) => {
     }
 });
 
+searchBtn.addEventListener('click', async () => {
+    clearList();
+    controller = new AbortController();
+    viewWaitingUI();
+    await search.search(controller);
+    hideWaitingUI();
+});
+
+selectCompany.addEventListener('change', () => {
+    controller.abort();
+    hideWaitingUI();
+
+});
+
+selectOptions.addEventListener('change', () => {
+    controller.abort();
+    hideWaitingUI();
+});
+
+
 const loginListener = () => {
     hideSearchBar();
     hideTabs();
@@ -58,8 +78,8 @@ const loginListener = () => {
     hideMain();
     hideAnchors();
     hideNameEmail();
-
-    acception.style.display = 'inherit';
+    hideNewBtn();
+    acception.style.display = 'block';
 }
 
 const logoutListenr = () => {
