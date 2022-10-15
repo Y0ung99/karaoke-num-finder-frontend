@@ -1,4 +1,4 @@
-import { addSongsToList, clearList, selectCompany, viewWaitingUI } from './common.js';
+import { addSongsToList, selectCompany } from './common.js';
 
 export default class Chart {
     constructor() {
@@ -19,10 +19,8 @@ export default class Chart {
     }
 
     async kPopular() {
-        viewWaitingUI();
-        clearList();
         const company = selectCompany.value;
-        const response = await fetch('https://karanum-dy.herokuapp.com/chart/popular/kpop', {
+        const response = await fetch('http://127.0.0.1:8080/chart/popular/kpop', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -32,10 +30,8 @@ export default class Chart {
         response.json().then(songs => addSongsToList(songs, 'marker'));
     }
     async jPopular() {
-        viewWaitingUI();
-        clearList();
         const company = selectCompany.value;
-        const response = await fetch('https://karanum-dy.herokuapp.com/chart/popular/jpop', {
+        const response = await fetch('http://127.0.0.1:8080/chart/popular/jpop', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -46,10 +42,8 @@ export default class Chart {
     } 
 
     async pPopular() {
-        viewWaitingUI();
-        clearList();
         const company = selectCompany.value;
-        const response = await fetch('https://karanum-dy.herokuapp.com/chart/popular/pop', {
+        const response = await fetch('http://127.0.0.1:8080/chart/popular/pop', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -60,10 +54,8 @@ export default class Chart {
     }
 
     async newsong() {
-        viewWaitingUI();
-        clearList();
         const company = selectCompany.value;
-        const response = await fetch('https://karanum-dy.herokuapp.com/chart/new', {
+        const response = await fetch('http://127.0.0.1:8080/chart/new', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'

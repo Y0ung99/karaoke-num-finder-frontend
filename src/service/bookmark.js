@@ -1,4 +1,4 @@
-import { addSongsToList, bookmarkTab, changeBookmarkTab, createPageButton, hideWaitingUI, list, viewWaitingUI } from './common.js';
+import { addSongsToList, bookmarkTab, changeBookmarkTab, createPageButton, list } from './common.js';
 
 export default class Bookmark {
     constructor(me, tokenStorage) {
@@ -22,14 +22,13 @@ export default class Bookmark {
     async showBookmarks() {
         if (await this.me instanceof Error) return alert('로그인 하셔야 사용할 수 있는 기능입니다.');
         changeBookmarkTab();
-        viewWaitingUI();
         const songs = await this.fetchSongToUser();
         createPageButton(songs, 'delete');
         addSongsToList(songs.slice(0, 99), 'delete');
     }
 
     async fetchSongToUser() {
-        const response = await fetch('https://karanum-dy.herokuapp.com/bookmark', {
+        const response = await fetch('http://127.0.0.1:8080/bookmark', {
             method: 'GET',
             headers: this.getHeaders(),
         });
@@ -41,7 +40,7 @@ export default class Bookmark {
         const me = await this.me;
         const data = {num, title, singer};
         
-        const response = await fetch('https://karanum-dy.herokuapp.com/bookmark', {
+        const response = await fetch('http://127.0.0.1:8080/bookmark', {
             method: 'POST',
             headers: this.getHeaders(),
             body: JSON.stringify(data),
@@ -56,7 +55,7 @@ export default class Bookmark {
         const me = await this.me;
         const data = {num};
         
-        const response = await fetch('https://karanum-dy.herokuapp.com/bookmark', {
+        const response = await fetch('http://127.0.0.1:8080/bookmark', {
             method: 'DELETE',
             headers: this.getHeaders(),
             body: JSON.stringify(data),
