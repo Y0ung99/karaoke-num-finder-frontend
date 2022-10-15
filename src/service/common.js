@@ -15,6 +15,7 @@ export const listdivider = document.querySelector('.list-divider');
 export const welcome = document.querySelector('.welcome');
 export const convertor = document.querySelector('#convertor');
 export const selectDate = document.querySelector('#selectDate');
+export const anchors = document.querySelector('.anchors')
 export const searchTxt = document.querySelector('.searchTxt');
 export const searchBtn = document.querySelector('.searchBtn');
 export const main = document.querySelector('.main');
