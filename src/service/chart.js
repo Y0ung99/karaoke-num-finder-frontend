@@ -1,4 +1,4 @@
-import { addSongsToList, clearList, selectCompany, viewWaitingUI } from './common.js';
+import { addSongsToList, baseURL, clearList, selectCompany, viewWaitingUI } from './common.js';
 
 export default class Chart {
     constructor() {
@@ -22,7 +22,7 @@ export default class Chart {
         viewWaitingUI();
         clearList();
         const company = selectCompany.value;
-        const response = await fetch('http://127.0.0.1:8080/chart/popular/kpop', {
+        const response = await fetch(`${baseURL}/chart/popular/kpop`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -35,7 +35,7 @@ export default class Chart {
         viewWaitingUI();
         clearList();
         const company = selectCompany.value;
-        const response = await fetch('http://127.0.0.1:8080/chart/popular/jpop', {
+        const response = await fetch(`${baseURL}/chart/popular/jpop`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -49,7 +49,7 @@ export default class Chart {
         viewWaitingUI();
         clearList();
         const company = selectCompany.value;
-        const response = await fetch('http://127.0.0.1:8080/chart/popular/pop', {
+        const response = await fetch(`${baseURL}/chart/popular/pop`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -63,7 +63,7 @@ export default class Chart {
         viewWaitingUI();
         clearList();
         const company = selectCompany.value;
-        const response = await fetch('http://127.0.0.1:8080/chart/new', {
+        const response = await fetch(`${baseURL}/chart/new`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'

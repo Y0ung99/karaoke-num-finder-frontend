@@ -1,4 +1,4 @@
-import { logo, searchTab, popularTab, newsongTab, loginTab, changePopularTab, changeNewsongTab, acception, hideSearchBar, hideMain, hideTabs, intervalAuth, hideNameEmail, convertor, viewNameEmail, welcome, submit, hideGenreBtn, hideAnchors, hideNewBtn, searchBtn, selectCompany, selectOptions, hideWaitingUI, viewWaitingUI, clearList} from './service/common.js';
+import {baseURL ,logo, searchTab, popularTab, newsongTab, loginTab, changePopularTab, changeNewsongTab, acception, hideSearchBar, hideMain, hideTabs, intervalAuth, hideNameEmail, convertor, viewNameEmail, welcome, submit, hideGenreBtn, hideAnchors, hideNewBtn, searchBtn, selectCompany, selectOptions, hideWaitingUI, viewWaitingUI, clearList} from './service/common.js';
 import TokenStorage from './db/token.js';
 import Http from './network/http.js';
 import Auth from './service/auth.js';
@@ -6,7 +6,6 @@ import Search from './service/search.js';
 import Chart from './service/chart.js';
 import Bookmark from './service/bookmark.js';
 
-const baseURL = 'http://127.0.0.1:8080'
 const http = new Http(baseURL);
 const tokenStorage = new TokenStorage();
 const auth = new Auth(http, tokenStorage);

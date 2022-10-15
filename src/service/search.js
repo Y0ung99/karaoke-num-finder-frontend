@@ -1,11 +1,11 @@
-import {searchTxt, selectCompany, selectOptions, addSongsToList, clearList, hideWaitingUI} from './common.js';
+import {searchTxt, selectCompany, selectOptions, addSongsToList, clearList, hideWaitingUI, baseURL} from './common.js';
 
 export default class Search {
     constructor() {
     }
 
     async getMaxPage(data) {
-        const response = await fetch('https://karanum-dy.herokuapp.com/search/maxpage', {
+        const response = await fetch(`${baseURL}/search/maxpage`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -33,7 +33,7 @@ export default class Search {
 
         for (let page = 1; page <= pageNum; page++) {
             data.page = page;
-            const response = await fetch('http://127.0.0.1:8080/search', {
+            const response = await fetch(`${baseURL}/search`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'

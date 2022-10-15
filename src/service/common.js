@@ -6,10 +6,10 @@ export const bookmarkTab = document.querySelector('.bookmarkTab');
 export const loginTab = document.querySelector('.c_login');
 export const genreBtn = document.querySelector('.genreBtn');
 export const newBtn = document.querySelector('.newBtn');
-export const acception = document.querySelector('.acception')
+export const acception = document.querySelector('.acception');
 export const name = document.querySelector('.name')
 export const email = document.querySelector('.email');
-export const nameTxt = document.querySelector('.nameTxt')
+export const nameTxt = document.querySelector('.nameTxt');
 export const emailTxt = document.querySelector('.emailTxt');
 export const listdivider = document.querySelector('.list-divider');
 export const welcome = document.querySelector('.welcome');
@@ -24,8 +24,9 @@ export const submit = document.querySelector('.submit');
 export const selectCompany = document.querySelector('#selectCompany');
 export const selectOptions = document.querySelector('#selectOptions');
 export const waitingUI = document.querySelector('.waiting');
-
 export const store = [];
+export const baseURL = 'http://127.0.0.1:8080';
+
 let markerBtn;
 let deleteBtn;
 
