@@ -63,7 +63,7 @@ export default class Auth {
         return data;
     }
 
-    async me() {
+    me = async () => {
         const token = this.tokenStorage.getToken();
         return this.http.fetch('/auth/me', {
             method: 'GET',
